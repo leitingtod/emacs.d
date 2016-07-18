@@ -2,8 +2,6 @@
 (add-to-list 'load-path (concat user-emacs-directory "features/"))
 (defvar user-emacs-cache-directory (concat user-emacs-directory ".cache/"))
 
-(require 'display)
-	 
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))

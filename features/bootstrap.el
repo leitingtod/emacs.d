@@ -36,18 +36,17 @@
   :init
   (setq smex-save-file (concat user-emacs-cache-directory "smex-items")))
 
-(use-package magit
-  :ensure t
-  :init
-  (setq magit-completing-read-function 'ivy-completing-read)
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
+;; (use-package magit
+;;   :ensure t
+;;   :init
+;;   (setq magit-completing-read-function 'ivy-completing-read)
+;;   :config
+;;   (global-set-key (kbd "C-x g") 'magit-status))
 
-(use-package projectile
-  :ensure t
-  :init
-  (setq projectile-completion-system 'ivy))
-
+;; (use-package projectile
+;;   :ensure t
+;;   :init
+;;   (setq projectile-completion-system 'ivy))
 
 (use-package hydra
   :ensure t
