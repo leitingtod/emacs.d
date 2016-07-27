@@ -1,10 +1,15 @@
+(setq debug-on-error t)
 (setq user-emacs-directory "~/program/myapp/emacs.d/")
 (add-to-list 'load-path (concat user-emacs-directory "features/"))
+(add-to-list 'load-path (concat user-emacs-directory "features/lang"))
 (defvar user-emacs-cache-directory (concat user-emacs-directory ".cache/"))
 
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(setq
+ package-archives
+ '(("popkit" . "http://elpa.popkit.org/packages/")))
+    
 (package-initialize)
 
 ;; Install 'use-package' if necessary
@@ -15,9 +20,10 @@
 ;; Enable use-package
 (eval-when-compile
   (require 'use-package))
-(require 'diminish) ;; if you use :diminish
-(require 'bind-key) ;; if you use any :bind variant
+(require 'diminish)
+(require 'bind-key)
 ;;(setq use-package-debug t)
+(setq use-package-inject-hooks t)
 
 ;; Modern UI
 (require 'modern-ui)
@@ -25,15 +31,17 @@
 ;; Customize defaults
 (require 'defaults)
 
-;; Prerequisites packages
-(require 'bootstrap)
-
-;; Auto completion
+;; Completions
 (require 'completion)
 
+;; Checkers
+;;(require 'checker)
+
+;; Org, markdown
+(require 'org-markdown)
 
 ;; Lisp, scheme, etc
-;;(require 'lang-lisp)
+(require 'lang-elisp "elisp.el")
 
 ;; Python
 ;;(require 'lang-python)
@@ -51,5 +59,5 @@
 ;;(require 'lang-js)
 
 ;; PHP
-;;(require 'lang-php
+;;(require 'lang-php)
 

@@ -15,7 +15,7 @@
 						   'recentf-save-list))
 ;; (add-to-list 'recentf-exclude (expand-file-name user-emacs-cache-directory))
 ;; (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
-;; (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
+;;(add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
 
 (require 'uniquify)
 ;; When having windows with repeated filenames, uniquify them
@@ -25,7 +25,8 @@
       uniquify-ignore-buffers-re "^\\*")
 
 ;;; bookmark
-(setq bookmark-default-file (concat user-emacs-cache-directory "bookmarks")
+(setq bookmark-default-file
+      (concat user-emacs-cache-directory "bookmarks")
       ;; autosave each change
       bookmark-save-flag 1)
 
@@ -110,5 +111,16 @@
 (scroll-bar-mode -1)
 
 (global-set-key (kbd "C-`") 'set-mark-command)
+(global-set-key (kbd "C-x C-q") 'view-mode)
+
+(use-package dired
+  :config
+  (define-key dired-mode-map (kbd "o") 'dired-display-file)
+  (define-key dired-mode-map (kbd "C-o") 'dired-find-file-other-window))
+
+(use-package dired-x
+  :commands (dired-jump
+	     dired-jump-other-window
+	     dired-omit-mode))
 
 (provide 'defaults)

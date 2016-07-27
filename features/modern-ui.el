@@ -21,5 +21,17 @@
   :init
   (require 'spacemacs-dark-theme))
 
+(use-package ace-window
+  :defer t
+  :init
+  (setq aw-keys '(?j ?k ?l ?m ?n ?o ?p))
+  (setq aw-background nil)
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:foreground "red" :weight bold :height 3.0)))))
+  :config
+  (global-set-key (kbd "C-x o") 'ace-window)
+  (global-set-key (kbd "C-x 1") 'ace-delete-window))
+
 (provide 'modern-ui)
 
