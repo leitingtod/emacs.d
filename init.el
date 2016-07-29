@@ -40,6 +40,9 @@
 ;; Org, markdown
 (require 'org-markdown)
 
+;; Magit
+(require 'git)
+
 ;; Lisp, scheme, etc
 (require 'lang-elisp "elisp.el")
 

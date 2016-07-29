@@ -1,3 +1,24 @@
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+
+(setq longlines-show-hard-newlines t)
+(setq delete-by-moving-to-trash t)
+(setq-default fill-column 80)
+(diminish auto-fill-function " Ⓕ")
+(setq-default sentence-end-double-space nil)
+
+;; The C-d rebinding that most shell-like buffers inherit from
+;; comint-mode assumes non-evil configuration with its
+;; `comint-delchar-or-maybe-eof' function, so we disable it
+(with-eval-after-load 'comint
+  (define-key comint-mode-map (kbd "C-d") nil))
+
+;; don't create backup~ files
+(setq make-backup-files nil)
+
+;; Mouse cursor in terminal mode
+(xterm-mouse-mode 1)
+
 ;;; linum mode
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'text-mode-hook 'linum-mode)
