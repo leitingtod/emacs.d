@@ -13,6 +13,7 @@
 	ivy-count-format "(%d/%d) "
 	ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   :config
+  (define-key ivy-minibuffer-map (kbd "S-M-SPC") 'ivy-restrict-to-matches)
   (global-set-key (kbd "C-s") 'swiper)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -33,55 +34,55 @@
   :init
   (setq smex-save-file (concat user-emacs-cache-directory "smex-items")))
 
-(use-package hydra
-  :ensure t
-  :config
-  (progn
-    (defhydra hydra-zoom ()
-      "zoom"
-      ("j" text-scale-increase "in")
-      ("k" text-scale-decrease "out")
-      ("r" (text-scale-set 0) "reset")
-      ("q" nil "quit"))
-    (global-set-key (kbd "C-c -") 'hydra-zoom/body)
+;; (use-package hydra
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (defhydra hydra-zoom ()
+;;       "zoom"
+;;       ("j" text-scale-increase "in")
+;;       ("k" text-scale-decrease "out")
+;;       ("r" (text-scale-set 0) "reset")
+;;       ("q" nil "quit"))
+;;     (global-set-key (kbd "C-c -") 'hydra-zoom/body)
 
-    (defhydra hydra-vi (:pre (set-cursor-color "#e52b50")
-			     :post (set-cursor-color "#ffffff")
-			     :color pink)
-      "vi"
-      ;; movement
-      ("f" forward-word)
-      ("b" backward-word)
-      ;; scrolling
-      ("C-v" scroll-up-command nil)
-      ("M-v" scroll-down-command nil)
-      ("n" (scroll-down-command))
-      ("SPC" (scroll-down-command))
-      ("p" (scroll-up command))
-      ("S-SPC" (scroll-up command))
-      ("v" recenter-top-bottom)
-      ;; arrows
-      ("h" backward-char)
-      ("j" next-line)
-      ("k" previous-line)
-      ("l" forward-char)
-      ;; delete
-      ("x" delete-char)
-      ;;("d" hydra-vi-del/body "del" :exit t)
-      ("u" undo)
-      ;; should be generic "open"
-      ("r" push-button "open")
-      ("." hydra-repeat)
-      ;; bad
-      ("m" set-mark-command "mark")
-      ("a" move-beginning-of-line "beg")
-      ("e" move-end-of-line "end")
-      ("y" kill-ring-save "yank" :exit t)
-      ;; exit points
-      ("q" nil "ins")
-      ("C-n" (forward-line 1) nil :exit t)
-      ("C-p" (forward-line -1) nil :exit t))
-    (global-set-key (kbd "C-c v") 'hydra-vi/body)))
+;;     (defhydra hydra-vi (:pre (set-cursor-color "#e52b50")
+;; 			     :post (set-cursor-color "#ffffff")
+;; 			     :color pink)
+;;       "vi"
+;;       ;; movement
+;;       ("f" forward-word)
+;;       ("b" backward-word)
+;;       ;; scrolling
+;;       ("C-v" scroll-up-command nil)
+;;       ("M-v" scroll-down-command nil)
+;;       ("n" (scroll-down-command))
+;;       ("SPC" (scroll-down-command))
+;;       ("p" (scroll-up command))
+;;       ("S-SPC" (scroll-up command))
+;;       ("v" recenter-top-bottom)
+;;       ;; arrows
+;;       ("h" backward-char)
+;;       ("j" next-line)
+;;       ("k" previous-line)
+;;       ("l" forward-char)
+;;       ;; delete
+;;       ("x" delete-char)
+;;       ;;("d" hydra-vi-del/body "del" :exit t)
+;;       ("u" undo)
+;;       ;; should be generic "open"
+;;       ("r" push-button "open")
+;;       ("." hydra-repeat)
+;;       ;; bad
+;;       ("m" set-mark-command "mark")
+;;       ("a" move-beginning-of-line "beg")
+;;       ("e" move-end-of-line "end")
+;;       ("y" kill-ring-save "yank" :exit t)
+;;       ;; exit points
+;;       ("q" nil "ins")
+;;       ("C-n" (forward-line 1) nil :exit t)
+;;       ("C-p" (forward-line -1) nil :exit t))
+;;     (global-set-key (kbd "C-c v") 'hydra-vi/body)))
 
 (use-package ivy-hydra
   :ensure t)

@@ -213,12 +213,12 @@
 ;;===============================================================
 ;; emoji support
 ;;===============================================================
-(use-package emoji-cheat-sheet-plus
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
-  (add-hook 'markdown-mode-hook 'emoji-cheat-sheet-plus-display-mode))
+;; (use-package emoji-cheat-sheet-plus
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (add-hook 'org-mode-hook 'emoji-cheat-sheet-plus-display-mode)
+;;   (add-hook 'markdown-mode-hook 'emoji-cheat-sheet-plus-display-mode))
 
 (use-package company-emoji
   :ensure t

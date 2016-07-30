@@ -1,8 +1,18 @@
-(setq debug-on-error t)
+(setq emacs-load-start-time (current-time))
 (setq user-emacs-directory "~/program/myapp/emacs.d/")
+
+;; Debug
+;;(setq debug-on-error t)
+;; (add-to-list 'load-path
+;; 	     (concat user-emacs-directory
+;; 		     "elpa/benchmark-init-20150905.1738/"))
+;; (require 'benchmark-init)
+;; (benchmark-init/activate)
+
 (add-to-list 'load-path (concat user-emacs-directory "features/"))
 (add-to-list 'load-path (concat user-emacs-directory "features/lang"))
 (defvar user-emacs-cache-directory (concat user-emacs-directory ".cache/"))
+(setq gc-cons-threshold (* 20 1024 1024))
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -64,3 +74,8 @@
 ;; PHP
 ;;(require 'lang-php)
 
+;;(require 'server)
+;;(unless (server-running-p) (server-start))
+(message
+ (format "Emacs startup time: %.3f seconds."
+         (float-time (time-since emacs-load-start-time))))

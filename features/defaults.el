@@ -86,7 +86,7 @@
 
 (setq
  inhibit-startup-screen t
- initial-scratch-message ""
+ initial-scratch-message "(hi, i love emacs)"
  ;;text-quoting-style 'grave
  ;;finding files
  prefer-coding-system 'utf-8
