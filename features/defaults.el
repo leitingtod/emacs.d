@@ -1,11 +1,11 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
-
 (setq longlines-show-hard-newlines t)
 (setq delete-by-moving-to-trash t)
 (setq-default fill-column 80)
 (diminish auto-fill-function " Ⓕ")
 (setq-default sentence-end-double-space nil)
+(show-paren-mode 1)
 
 ;; The C-d rebinding that most shell-like buffers inherit from
 ;; comint-mode assumes non-evil configuration with its

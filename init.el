@@ -74,8 +74,9 @@
 ;; PHP
 ;;(require 'lang-php)
 
-;;(require 'server)
-;;(unless (server-running-p) (server-start))
+(require 'server)
+(unless (server-running-p) (server-start))
+
 (message
  (format "Emacs startup time: %.3f seconds."
          (float-time (time-since emacs-load-start-time))))

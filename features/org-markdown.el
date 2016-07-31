@@ -10,18 +10,20 @@
   :ensure t
   :defer t)
 
-;; (use-package ob
-;;   :defer t
-;;   :init
-;;   (defun org-babel-do-load-languages ()
-;;     (org-babel-do-load-languages 'org-babel-load-languages
-;; 				 org-babel-load-language))
-;;   (defun ob-fix-inline-images ()
-;;     "Fix redisplay of inline images after a code block evaluation."
-;;     (when org-inline-image-overlays
-;;       (org-redisplay-inline-images)))
-;;   (add-hook 'org-mode-hook 'org-babel-do-load-languages)
-;;   (add-hook 'org-babel-after-execute-hook 'ob-fix-inline-images))
+(use-package ob
+  :defer t
+  :init
+  (defun i:org-babel-do-load-languages ()
+    (org-babel-do-load-languages 'org-babel-load-languages
+                                 org-babel-load-languages))
+  (defun ob-fix-inline-images ()
+    "Fix redisplay of inline images after a code block evaluation."
+    (when org-inline-image-overlays
+      (org-redisplay-inline-images)))
+  (add-hook 'org-mode-hook 'i:org-babel-do-load-languages)
+  (add-hook 'org-babel-after-execute-hook 'ob-fix-inline-images)
+  :config
+  (add-to-list 'org-babel-load-languages '(ledger . t)))
 
 (use-package org
   :ensure t
