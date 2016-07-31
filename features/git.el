@@ -12,6 +12,7 @@
              magit-status
              magit-submodule-popup)
   :init
+  (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq magit-refresh-status-buffer nil)
   (setq vc-handled-backends (delq 'Git vc-handled-backends))
   (setq magit-completing-read-function 'ivy-completing-read)
