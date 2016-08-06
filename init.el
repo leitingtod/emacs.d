@@ -2,7 +2,7 @@
 (setq user-emacs-directory "~/program/myapp/emacs.d/")
 
 ;; Debug
-;;(setq debug-on-error t)
+(setq debug-on-error t)
 ;; (add-to-list 'load-path
 ;; 	     (concat user-emacs-directory
 ;; 		     "elpa/benchmark-init-20150905.1738/"))
@@ -10,7 +10,6 @@
 ;; (benchmark-init/activate)
 
 (add-to-list 'load-path (concat user-emacs-directory "features/"))
-(add-to-list 'load-path (concat user-emacs-directory "features/lang"))
 (defvar user-emacs-cache-directory (concat user-emacs-directory ".cache/"))
 (setq gc-cons-threshold (* 20 1024 1024))
 
@@ -19,7 +18,7 @@
 (setq
  package-archives
  '(("popkit" . "http://elpa.popkit.org/packages/")))
-    
+
 (package-initialize)
 
 ;; Install 'use-package' if necessary
@@ -47,6 +46,9 @@
 ;; Checkers
 ;;(require 'checker)
 
+;; Editing
+(require 'editing)
+
 ;; Org, markdown
 (require 'org-markdown)
 
@@ -54,7 +56,17 @@
 (require 'git)
 
 ;; Lisp, scheme, etc
-(require 'lang-elisp "elisp.el")
+(defmacro require-feature (pkg)
+  `(let* ((split (split-string (symbol-name ,pkg) "-"))
+          (dir (car split))
+          (file (cadr split)))
+     (progn
+       (add-to-list 'load-path (concat user-emacs-directory "features/" dir "/"))
+       (require ,pkg file))))
+
+(require-feature 'lang-elisp)
+
+
 
 ;; Python
 ;;(require 'lang-python)

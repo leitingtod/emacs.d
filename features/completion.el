@@ -9,9 +9,9 @@
   :init
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
-	ivy-height 10
-	ivy-count-format "(%d/%d) "
-	ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+        ivy-height 10
+        ivy-count-format "(%d/%d) "
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   :config
   (define-key ivy-minibuffer-map (kbd "S-M-SPC") 'ivy-restrict-to-matches)
   (global-set-key (kbd "C-s") 'swiper)
@@ -27,7 +27,8 @@
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
-  (global-set-key (kbd "C-S-o") 'counsel-rhythmbox))
+  (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+  (diminish 'ivy-mode " Ⓘ"))
 
 (use-package smex
   :ensure t
@@ -47,8 +48,8 @@
 ;;     (global-set-key (kbd "C-c -") 'hydra-zoom/body)
 
 ;;     (defhydra hydra-vi (:pre (set-cursor-color "#e52b50")
-;; 			     :post (set-cursor-color "#ffffff")
-;; 			     :color pink)
+;;               :post (set-cursor-color "#ffffff")
+;;               :color pink)
 ;;       "vi"
 ;;       ;; movement
 ;;       ("f" forward-word)
@@ -89,38 +90,38 @@
 
 (use-package projectile
   :commands (projectile-ack
-	     projectile-ag
-	     projectile-compile-project
-	     projectile-dired
-	     projectile-find-dir
-	     projectile-find-file
-	     projectile-find-tag
-	     projectile-test-project
-	     projectile-grep
-	     projectile-invalidate-cache
-	     projectile-kill-buffers
-	     projectile-multi-occur
-	     projectile-project-p
-	     projectile-project-root
-	     projectile-recentf
-	     projectile-regenerate-tags
-	     projectile-replace
-	     projectile-replace-regexp
-	     projectile-run-async-shell-command-in-root
-	     projectile-run-shell-command-in-root
-	     projectile-switch-project
-	     projectile-switch-to-buffer
-	     projectile-vc)
+             projectile-ag
+             projectile-compile-project
+             projectile-dired
+             projectile-find-dir
+             projectile-find-file
+             projectile-find-tag
+             projectile-test-project
+             projectile-grep
+             projectile-invalidate-cache
+             projectile-kill-buffers
+             projectile-multi-occur
+             projectile-project-p
+             projectile-project-root
+             projectile-recentf
+             projectile-regenerate-tags
+             projectile-replace
+             projectile-replace-regexp
+             projectile-run-async-shell-command-in-root
+             projectile-run-shell-command-in-root
+             projectile-switch-project
+             projectile-switch-to-buffer
+             projectile-vc)
   :init
   ;; note for Windows: GNU find or Cygwin find must be in path to enable
   ;; fast indexing
   (when (and (eq system-type 'window-nt) (executable-find "find"))
     (setq  projectile-indexing-method 'alien
-	   projectile-generic-command "find . -type f"))
+           projectile-generic-command "find . -type f"))
   (setq projectile-completion-system 'ivy
-	projectile-sort-order 'recentf
-	projectile-cache-file (concat user-emacs-cache-directory "projectile.cache")
-	projectile-known-projects-file (concat user-emacs-cache-directory "projectile-bookmarks.eld")))
+        projectile-sort-order 'recentf
+        projectile-cache-file (concat user-emacs-cache-directory "projectile.cache")
+        projectile-known-projects-file (concat user-emacs-cache-directory "projectile-bookmarks.eld")))
 
 (use-package company
   :ensure t
@@ -131,9 +132,9 @@
         company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil)
-  (add-hook 'company-completion-started-hook 'company-turn-off-fci)
-  (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
-  (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+  ;;(add-hook 'company-completion-started-hook 'company-turn-off-fci)
+  ;;(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
+  ;;(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
   :config
   (diminish 'company-mode "Ⓒ"))
 
@@ -145,10 +146,17 @@
 
 (use-package semantic
   :defer t
+  :init
+  (setq srecode-map-save-file
+        (concat user-emacs-cache-directory
+                "srecode-map.el"))
+  (setq semanticdb-default-save-directory
+        (concat user-emacs-cache-directory
+                "semanticdb/"))
   :config
   (add-to-list 'semantic-default-submodes
-	       'global-semantic-stickyfunc-mode)
+               'global-semantic-stickyfunc-mode)
   (add-to-list 'semantic-default-submodes
-	       'global-semantic-idle-summary-mode))
+               'global-semantic-idle-summary-mode))
 
 (provide 'completion)
