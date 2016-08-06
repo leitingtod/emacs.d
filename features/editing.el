@@ -31,10 +31,11 @@
   :ensure t
   :init
   (global-origami-mode)
+  (push '(origami-mode "") minor-mode-alist)
   :config
   (defun origami-elisp-parser (create)
     (origami-lisp-parser create "(\\(use-package\\|def\\)\\w*\\s-*\\(\\s_\\|\\w\\|[:?!]\\)*\\([ \\t]*(.*?)\\)?"))
-  (diminish 'origami-mode " Ⓕ"))
+  (diminish 'origami-mode "Ⓙ"))
 
 (use-package smartparens
   :ensure

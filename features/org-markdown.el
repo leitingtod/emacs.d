@@ -31,17 +31,17 @@
   :commands (org-clock-out org-occur-in-agenda-files org-agenda-files orgtbl-mode)
   :init
   (setq org-clock-persist-file (concat user-emacs-cache-directory
-				       "org-clock-save.el")
-	org-id-locations-file (concat user-emacs-cache-directory
-				      "org-id-locations")
-	org-publish-timestamp-directory (concat user-emacs-cache-directory "org-timestamps/")
-	org-hide-leading-starts t
-	org-log-done t
-	org-startup-with-inline-images t
-	org-image-actual-width nil
-	org-src-fontify-natively t
-	org-imenu-depth 8
-	org-hide-leading-stars t)
+                       "org-clock-save.el")
+    org-id-locations-file (concat user-emacs-cache-directory
+                      "org-id-locations")
+    org-publish-timestamp-directory (concat user-emacs-cache-directory "org-timestamps/")
+    org-hide-leading-starts t
+    org-log-done t
+    org-startup-with-inline-images t
+    org-image-actual-width nil
+    org-src-fontify-natively t
+    org-imenu-depth 8
+    org-hide-leading-stars t)
   ;;(add-hook 'org-mode-hook 'flyspell-mode)
   :config
   (define-key global-map "\C-cl" 'org-store-link)
@@ -72,8 +72,8 @@
   :ensure t
   :defer t
   :commands (org-download-enable
-	     org-download-yank
-	     org-download-screenshot)
+         org-download-yank
+         org-download-screenshot)
   :init
   (add-hook 'org-mode-hook 'org-download-enable))
 
@@ -108,7 +108,7 @@
   :config
   ;;Better default capture template
   (setcdr (cdddr (assoc "ort/todo" org-capture-templates))
-  	  '("* TODO %?\n%U\n\n%i" :empty-lines 1)))
+      '("* TODO %?\n%U\n\n%i" :empty-lines 1)))
 
 (add-hook 'use-package--org--post-config-hook (require 'ox-gfm))
 ;; ;;(add-hook 'use-package--org--post-config-hook (require 'ox-reveal))
@@ -133,55 +133,55 @@
   :config
   (progn
     (mmm-add-classes '((markdown-python
-			:submode python-mode
-			:face mmm-declaration-submode-face
-			:front "^```python[\n\r]+"
-			:back "^```$")))
+            :submode python-mode
+            :face mmm-declaration-submode-face
+            :front "^```python[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-html
-			:submode web-mode
-			:face mmm-declaration-submode-face
-			:front "^```html[\n\r]+"
-			:back "^```$")))
+            :submode web-mode
+            :face mmm-declaration-submode-face
+            :front "^```html[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-java
-			:submode java-mode
-			:face mmm-declaration-submode-face
-			:front "^```java[\n\r]+"
-			:back "^```$")))
+            :submode java-mode
+            :face mmm-declaration-submode-face
+            :front "^```java[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-ruby
-			:submode ruby-mode
-			:face mmm-declaration-submode-face
-			:front "^```ruby[\n\r]+"
-			:back "^```$")))
+            :submode ruby-mode
+            :face mmm-declaration-submode-face
+            :front "^```ruby[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-c
-			:submode c-mode
-			:face mmm-declaration-submode-face
-			:front "^```c[\n\r]+"
-			:back "^```$")))
+            :submode c-mode
+            :face mmm-declaration-submode-face
+            :front "^```c[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-c++
-			:submode c++-mode
-			:face mmm-declaration-submode-face
-			:front "^```c\+\+[\n\r]+"
-			:back "^```$")))
+            :submode c++-mode
+            :face mmm-declaration-submode-face
+            :front "^```c\+\+[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-elisp
-			:submode emacs-lisp-mode
-			:face mmm-declaration-submode-face
-			:front "^```elisp[\n\r]+"
-			:back "^```$")))
+            :submode emacs-lisp-mode
+            :face mmm-declaration-submode-face
+            :front "^```elisp[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-javascript
-			:submode javascript-mode
-			:face mmm-declaration-submode-face
-			:front "^```javascript[\n\r]+"
-			:back "^```$")))
+            :submode javascript-mode
+            :face mmm-declaration-submode-face
+            :front "^```javascript[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-ess
-			:submode R-mode
-			:face mmm-declaration-submode-face
-			:front "^```{?r.*}?[\n\r]+"
-			:back "^```$")))
+            :submode R-mode
+            :face mmm-declaration-submode-face
+            :front "^```{?r.*}?[\n\r]+"
+            :back "^```$")))
     (mmm-add-classes '((markdown-rust
-			:submode rust-mode
-			:face mmm-declaration-submode-face
-			:front "^```rust[\n\r]+"
-			:back "^```$")))
+            :submode rust-mode
+            :face mmm-declaration-submode-face
+            :front "^```rust[\n\r]+"
+            :back "^```$")))
     (setq mmm-global-mode t)
     (mmm-add-mode-ext-class 'markdown-mode nil 'markdown-python)
     (mmm-add-mode-ext-class 'markdown-mode nil 'markdown-java)
@@ -203,13 +203,13 @@
 ;;     (defun vmd-company-backend (command &optional arg &rest ignored)
 ;;       (interactive (list 'interactive))
 ;;       (cl-case command
-;; 	(interactive (company-begin-backend 'company-sample-backend))
-;; 	(prefix (and (eq major-mode 'fundamental-mode)
-;; 		     (company-grab-symbol)))
-;; 	(candidates
-;; 	 (cl-remove-if-not
-;; 	  (lambda (c) (string-prefix-p arg c))
-;; 	  vmd-mode/github-emojis-list))))
+;;  (interactive (company-begin-backend 'company-sample-backend))
+;;  (prefix (and (eq major-mode 'fundamental-mode)
+;;           (company-grab-symbol)))
+;;  (candidates
+;;   (cl-remove-if-not
+;;    (lambda (c) (string-prefix-p arg c))
+;;    vmd-mode/github-emojis-list))))
 ;;     (add-to-list 'company-backends 'vmd-company-backend)))
 
 ;;===============================================================
@@ -227,5 +227,5 @@
   :init
   (add-hook 'org-mode-hook 'company-mode t)
   (add-hook 'markdown-mode-hook 'company-mode t))
- 
+
 (provide 'org-markdown)

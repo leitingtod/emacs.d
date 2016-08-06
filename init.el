@@ -4,8 +4,8 @@
 ;; Debug
 (setq debug-on-error t)
 ;; (add-to-list 'load-path
-;; 	     (concat user-emacs-directory
-;; 		     "elpa/benchmark-init-20150905.1738/"))
+;;       (concat user-emacs-directory
+;;           "elpa/benchmark-init-20150905.1738/"))
 ;; (require 'benchmark-init)
 ;; (benchmark-init/activate)
 
@@ -17,7 +17,12 @@
 (setq package-enable-at-startup nil)
 (setq
  package-archives
- '(("popkit" . "http://elpa.popkit.org/packages/")))
+ '(;;("org" . "https://elpa.zilongshanren.com/org/")
+   ;;("melpa" . "https://elpa.zilongshanren.com/melpa/")
+   ("popkit" . "http://elpa.popkit.org/packages/")
+   ;; melpa-stable has no spacemacs-theme
+   ;;("melpa-stable" . "https://elpa.zilongshanren.com/melpa-stable/")
+   ))
 
 (package-initialize)
 
@@ -89,6 +94,10 @@
 (require 'server)
 (unless (server-running-p) (server-start))
 
+(let ((pkg-installed
+       (- (length
+           (directory-files (concat user-emacs-directory "elpa/")))
+          2)))
 (message
- (format "Emacs startup time: %.3f seconds."
-         (float-time (time-since emacs-load-start-time))))
+ (format "Emacs startup time: %.3f seconds, %d packages loaded."
+         (float-time (time-since emacs-load-start-time)) pkg-installed)))
