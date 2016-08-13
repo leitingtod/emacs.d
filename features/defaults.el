@@ -26,14 +26,14 @@
 
 ;;; recentf mode
 (add-hook 'find-file-hook
-	  (lambda () (unless recentf-mode
-		       (recentf-mode)
-		       (recentf-track-opened-file))))
+          (lambda () (unless recentf-mode
+                       (recentf-mode)
+                       (recentf-track-opened-file))))
 (setq recentf-save-file (concat user-emacs-cache-directory "recentf")
       recentf-max-saved-items 1000
       recentf-auto-cleanup 'never
       recentf-auto-save-timer (run-with-idle-timer 600 t
-						   'recentf-save-list))
+                                                   'recentf-save-list))
 ;; (add-to-list 'recentf-exclude (expand-file-name user-emacs-cache-directory))
 ;; (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
 ;;(add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'")
@@ -73,7 +73,7 @@
 
 (let ((autosave-dir (concat user-emacs-cache-directory "site/")))
   (add-to-list 'auto-save-file-name-transforms
-	       `(".*" ,autosave-dir t) 'append)
+               `(".*" ,autosave-dir t) 'append)
   (unless (file-exists-p autosave-dir)
     (make-directory autosave-dir t)))
 
@@ -124,7 +124,7 @@
 
 ;;(add-hook 'server-switch-hook 'raise-frame)
 ;;(remove-hook 'post-self-insert-hook
-;;	     'blink-paren-post-self-insert-function)
+;;       'blink-paren-post-self-insert-function)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (tool-bar-mode -1)
@@ -134,6 +134,47 @@
 (global-set-key (kbd "C-`") 'set-mark-command)
 (global-set-key (kbd "C-x C-q") 'view-mode)
 
+(use-package view-mode
+  :defer t
+  :init
+  (message (format "======== view--mode loaded"))
+  (setq view-mode-map (make-sparse-keymap))
+  (let ((map view-mode-map))
+    ;; redefine keymap
+    (define-key map "q" 'View-exit-and-edit)
+    (define-key map "m" 'point-to-register)
+    (define-key map "'" 'register-to-point)
+    (define-key map "x" 'exchange-point-and-mark)
+    (define-key map "@" 'View-back-to-mark)
+    (define-key map "." 'set-mark-command)
+    (define-key map "%" 'View-goto-percent)
+    (define-key map "g" 'View-goto-line)
+
+    ;; (define-key map "F" 'View-revert-buffer-scroll-page-forward)
+
+    (define-key map "k" 'previous-line)
+    (define-key map "j" 'next-line)
+
+    (define-key map "p" 'View-scroll-page-backward)
+    (define-key map " " 'View-scroll-page-forward)
+    (define-key map [?\S-\ ]  'View-scroll-page-backward)
+
+    (define-key map ">" 'end-of-buffer)
+    (define-key map "<" 'beginning-of-buffer)
+
+    (define-key map "-" 'negative-argument)
+    (define-key map "9" 'digit-argument)
+    (define-key map "8" 'digit-argument)
+    (define-key map "7" 'digit-argument)
+    (define-key map "6" 'digit-argument)
+    (define-key map "5" 'digit-argument)
+    (define-key map "4" 'digit-argument)
+    (define-key map "3" 'digit-argument)
+    (define-key map "2" 'digit-argument)
+    (define-key map "1" 'digit-argument)
+    (define-key map "0" 'digit-argument)
+    (define-key map "?" 'describe-mode)))
+
 (use-package dired
   :config
   (define-key dired-mode-map (kbd "o") 'dired-display-file)
@@ -141,7 +182,7 @@
 
 (use-package dired-x
   :commands (dired-jump
-	     dired-jump-other-window
-	     dired-omit-mode))
+             dired-jump-other-window
+             dired-omit-mode))
 
 (provide 'defaults)
