@@ -43,4 +43,4 @@
              srefactor-lisp-format-sexp
              srefactor-lisp-one-line))
 
-(provide 'lang-elisp)
+(provide 'lang:elisp)

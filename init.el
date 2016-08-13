@@ -60,36 +60,18 @@
 ;; Magit
 (require 'git)
 
-;; Lisp, scheme, etc
+;; Programing Languages
 (defmacro require-feature (pkg)
-  `(let* ((split (split-string (symbol-name ,pkg) "-"))
+  `(let* ((split (split-string (symbol-name ,pkg) ":"))
           (dir (car split))
           (file (cadr split)))
      (progn
        (add-to-list 'load-path (concat user-emacs-directory "features/" dir "/"))
        (require ,pkg file))))
 
-(require-feature 'lang-elisp)
+(require-feature 'lang:elisp)
+(require-feature 'lang:racket)
 
-
-
-;; Python
-;;(require 'lang-python)
-
-;; Golang
-;;(require 'lang-go)
-
-;; C/C++
-;;(require 'lang-c-c++)
-
-;; Web
-;;(require 'lang-web)
-
-;; Javascript
-;;(require 'lang-js)
-
-;; PHP
-;;(require 'lang-php)
 
 (require 'server)
 (unless (server-running-p) (server-start))
@@ -97,7 +79,7 @@
 (let ((pkg-installed
        (- (length
            (directory-files (concat user-emacs-directory "elpa/")))
-          2)))
-(message
- (format "Emacs startup time: %.3f seconds, %d packages loaded."
-         (float-time (time-since emacs-load-start-time)) pkg-installed)))
+          4)))
+  (message
+   (format "Emacs startup time: %.3f seconds, %d packages loaded."
+           (float-time (time-since emacs-load-start-time)) pkg-installed)))

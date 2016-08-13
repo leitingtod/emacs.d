@@ -137,7 +137,6 @@
 (use-package view-mode
   :defer t
   :init
-  (message (format "======== view--mode loaded"))
   (setq view-mode-map (make-sparse-keymap))
   (let ((map view-mode-map))
     ;; redefine keymap
