@@ -44,7 +44,8 @@
   (push '(fci-mode "") minor-mode-alist)
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
   ;;(global-fci-mode 1)
-  (add-hook 'after-change-major-mode-hook 'fci-mode)
+  ;;(add-hook 'after-change-major-mode-hook 'fci-mode)
+  (add-hook 'prog-mode-hook 'fci-mode)
   :config
   (diminish 'fci-mode " ⓕ"))
 

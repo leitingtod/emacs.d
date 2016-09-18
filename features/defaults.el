@@ -132,6 +132,7 @@
 (scroll-bar-mode -1)
 
 (global-set-key (kbd "C-`") 'set-mark-command)
+(global-set-key (kbd "C-c m") 'set-mark-command)
 (global-set-key (kbd "C-x C-q") 'view-mode)
 
 (use-package view-mode
@@ -141,6 +142,7 @@
   (let ((map view-mode-map))
     ;; redefine keymap
     (define-key map "q" 'View-exit-and-edit)
+    (define-key map "Q" 'View-quit)
     (define-key map "m" 'point-to-register)
     (define-key map "'" 'register-to-point)
     (define-key map "x" 'exchange-point-and-mark)
@@ -153,10 +155,10 @@
 
     (define-key map "k" 'previous-line)
     (define-key map "j" 'next-line)
+    (define-key map "l" 'recenter-top-bottom)
 
     (define-key map "p" 'View-scroll-page-backward)
     (define-key map " " 'View-scroll-page-forward)
-    (define-key map [?\S-\ ]  'View-scroll-page-backward)
 
     (define-key map ">" 'end-of-buffer)
     (define-key map "<" 'beginning-of-buffer)
@@ -173,6 +175,7 @@
     (define-key map "1" 'digit-argument)
     (define-key map "0" 'digit-argument)
     (define-key map "?" 'describe-mode)))
+;;(add-hook 'find-file-hook 'view-mode)
 
 (use-package dired
   :config

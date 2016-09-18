@@ -1,5 +1,5 @@
 (setq emacs-load-start-time (current-time))
-(setq user-emacs-directory "~/program/myapp/emacs.d/")
+;;(setq user-emacs-directory "~/program/myapp/emacs.d/")
 
 ;; Debug
 (setq debug-on-error t)
@@ -19,6 +19,7 @@
  package-archives
  '(;;("org" . "https://elpa.zilongshanren.com/org/")
    ;;("melpa" . "https://elpa.zilongshanren.com/melpa/")
+   ;;("marmalade" . "http://elpa.zilongshanren.com/marmalade/")
    ("popkit" . "http://elpa.popkit.org/packages/")
    ;; melpa-stable has no spacemacs-theme
    ;;("melpa-stable" . "https://elpa.zilongshanren.com/melpa-stable/")
@@ -71,7 +72,8 @@
 
 (require-feature 'lang:elisp)
 (require-feature 'lang:racket)
-
+(require-feature 'lang:javascript)
+(require-feature 'lang:web)
 
 (require 'server)
 (unless (server-running-p) (server-start))
