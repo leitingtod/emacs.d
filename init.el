@@ -70,10 +70,10 @@
        (add-to-list 'load-path (concat user-emacs-directory "features/" dir "/"))
        (require ,pkg file))))
 
-(require-feature 'lang:elisp)
-(require-feature 'lang:racket)
-(require-feature 'lang:javascript)
-(require-feature 'lang:web)
+;; (require-feature 'lang:elisp)
+;; (require-feature 'lang:racket)
+;; (require-feature 'lang:javascript)
+;; (require-feature 'lang:web)
 
 (require 'server)
 (unless (server-running-p) (server-start))
