@@ -1,7 +1,7 @@
 (setq emacs-load-start-time (current-time))
-;;(setq user-emacs-directory "~/program/myapp/emacs.d/")
 
 ;; Debug
+;;(setq user-emacs-directory "~/program/myapp/emacs.d/")
 (setq debug-on-error t)
 ;; (add-to-list 'load-path
 ;;       (concat user-emacs-directory
@@ -18,6 +18,7 @@
 (setq
  package-archives
  '(;;("org" . "https://elpa.zilongshanren.com/org/")
+   ("org" . "http://orgmode.org/elpa/")
    ;;("melpa" . "https://elpa.zilongshanren.com/melpa/")
    ;;("marmalade" . "http://elpa.zilongshanren.com/marmalade/")
    ("popkit" . "http://elpa.popkit.org/packages/")
@@ -39,41 +40,6 @@
 (require 'bind-key)
 ;;(setq use-package-debug t)
 (setq use-package-inject-hooks t)
-
-;; Modern UI
-(require 'modern-ui)
-
-;; Customize defaults
-(require 'defaults)
-
-;; Completions
-(require 'completion)
-
-;; Checkers
-;;(require 'checker)
-
-;; Editing
-(require 'editing)
-
-;; Org, markdown
-(require 'org-markdown)
-
-;; Magit
-(require 'git)
-
-;; Programing Languages
-(defmacro require-feature (pkg)
-  `(let* ((split (split-string (symbol-name ,pkg) ":"))
-          (dir (car split))
-          (file (cadr split)))
-     (progn
-       (add-to-list 'load-path (concat user-emacs-directory "features/" dir "/"))
-       (require ,pkg file))))
-
-;; (require-feature 'lang:elisp)
-;; (require-feature 'lang:racket)
-;; (require-feature 'lang:javascript)
-;; (require-feature 'lang:web)
 
 (require 'server)
 (unless (server-running-p) (server-start))
