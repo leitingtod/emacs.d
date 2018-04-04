@@ -75,7 +75,7 @@
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
   (global-set-key (kbd "C-c g") 'counsel-git)
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-c k") 'counsel-ag)
+  (global-set-key (kbd "C-c a") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
   (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
   (diminish 'ivy-mode "Ivy"))
@@ -90,7 +90,7 @@
    '(aw-leading-char-face
 	 ((t (:foreground "red" :weight bold :height 3.0)))))
   (global-set-key (kbd "C-x o") 'ace-window)
-  (global-set-key (kbd "C-x 1") 'ace-delete-window))
+  (global-set-key (kbd "C-c k") 'ace-delete-window))
 
 (use-package avy
   :ensure t
@@ -102,6 +102,12 @@
 (use-package move-text
   :ensure t
   :defer t)
+
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package undo-tree
   :ensure t
