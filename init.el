@@ -38,6 +38,7 @@
 (require 'keybindings)
 (require 'completion)
 (require 'editing)
+(require 'org-mode)
 
 (message
  (format "Emacs startup time: %.3f seconds."
