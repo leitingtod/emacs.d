@@ -5,7 +5,7 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(setq gc-cons-threshold (* 20 1024 1024))
+(setq gc-cons-threshold (* 512 1024 1024))
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
 (defvar user-emacs-cache-directory (concat user-emacs-directory ".cache/"))
@@ -34,10 +34,10 @@
   (require 'bind-key))
 
 (require 'defaults)
-(require 'completion)
-(require 'keybindings)
 (require 'theme)
-(require 'window)
+(require 'keybindings)
+(require 'completion)
+(require 'editing)
 
 (message
  (format "Emacs startup time: %.3f seconds."
